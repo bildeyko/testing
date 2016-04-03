@@ -31,7 +31,7 @@ public class Ex1Test {
     }
 
     // Boundary-value: PI/2
-    @Test
+    @Test(timeout=20000)
     public void pointPiDiv2() {
         double sec = ex1.sec(Math.PI/2, accuracy);
         Assert.assertEquals(Double.POSITIVE_INFINITY, sec, 0.001);
@@ -48,7 +48,7 @@ public class Ex1Test {
     }
 
     // Boundary-value: -PI/2
-    @Test
+    @Test(timeout=20000)
     public void pointMPiDiv2() {
         double sec = ex1.sec(-Math.PI/2, accuracy);
         Assert.assertEquals(Double.POSITIVE_INFINITY, sec, 0.001);
@@ -81,25 +81,8 @@ public class Ex1Test {
         Assert.assertEquals(-1.004, sec, 0.1);
     }
 
-    // Boundary-value: -PI
-    @Test
-    public void pointMPi() {
-        double sec = ex1.sec(-Math.PI, accuracy);
-        Assert.assertEquals(-1.0, sec, 0.001);
-    }
-    @Test
-    public void pointMPi_r() {
-        double sec = ex1.sec(-Math.PI+0.09, accuracy);
-        Assert.assertEquals(-1.004, sec, 0.1);
-    }
-    @Test
-    public void pointMPi_l() {
-        double sec = ex1.sec(-Math.PI-0.09, accuracy);
-        Assert.assertEquals(-1.004, sec, 0.1);
-    }
-
     // Boundary-value: 3PI/2
-    @Test
+    @Test(timeout=20000)
     public void point3PiDiv2() {
         double sec = ex1.sec(3*Math.PI/2, accuracy);
         Assert.assertEquals(Double.POSITIVE_INFINITY, sec, 0.001);
@@ -113,23 +96,6 @@ public class Ex1Test {
     public void point3PiDiv2_l() {
         double sec = ex1.sec((3*Math.PI/2)-0.09, accuracy);
         Assert.assertEquals(-11.126, sec, 0.1);
-    }
-
-    // Boundary-value: -3PI/2
-    @Test
-    public void pointM3PiDiv2() {
-        double sec = ex1.sec(3*-Math.PI/2, accuracy);
-        Assert.assertEquals(Double.POSITIVE_INFINITY, sec, 0.001);
-    }
-    @Test
-    public void pointM3PiDiv2_r() {
-        double sec = ex1.sec((3*-Math.PI/2)+0.09, accuracy);
-        Assert.assertEquals(-11.126, sec, 0.1);
-    }
-    @Test
-    public void pointM3PiDiv2_l() {
-        double sec = ex1.sec((3*-Math.PI/2)-0.09, accuracy);
-        Assert.assertEquals(11.126, sec, 0.1);
     }
 
     // Positive infinity

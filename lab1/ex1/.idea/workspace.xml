@@ -75,7 +75,7 @@
         <entry file="file://$PROJECT_DIR$/src/ru/ifmo/Ex1.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="22" column="27" selection-start-line="22" selection-start-column="27" selection-end-line="22" selection-end-column="27" />
+              <caret line="61" column="38" selection-start-line="61" selection-start-column="29" selection-end-line="61" selection-end-column="38" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -86,8 +86,8 @@
       <file leaf-file-name="Ex1Test.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/test/Ex1Test.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="2.9686985">
-              <caret line="120" column="53" selection-start-line="120" selection-start-column="53" selection-end-line="120" selection-end-column="53" />
+            <state vertical-scroll-proportion="0.53212523">
+              <caret line="99" column="0" selection-start-line="99" selection-start-column="0" selection-end-line="99" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -240,26 +240,6 @@
     <property name="FullScreen" value="false" />
   </component>
   <component name="RunManager" selected="JUnit.Ex1Test">
-    <configuration default="false" name="Ex1Test.pointM3PiDiv2_r" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="ex1" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="Ex1Test" />
-      <option name="METHOD_NAME" value="pointM3PiDiv2_r" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="VM_PARAMETERS" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <envs />
-      <patterns />
-      <method />
-    </configuration>
     <configuration default="false" name="Ex1Test.pointM3PiDiv2_l" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ex1" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
@@ -340,6 +320,26 @@
       <patterns />
       <method />
     </configuration>
+    <configuration default="false" name="Ex1Test.pointPiDiv2" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ex1" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="Ex1Test" />
+      <option name="METHOD_NAME" value="pointPiDiv2" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+      <method />
+    </configuration>
     <configuration default="true" type="Application" factoryName="Application">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <option name="MAIN_CLASS_NAME" />
@@ -380,19 +380,19 @@
       <method />
     </configuration>
     <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="JUnit.Ex1Test.pointM3PiDiv2_r" />
-      <item index="1" class="java.lang.String" itemvalue="JUnit.Ex1Test.pointM3PiDiv2_l" />
-      <item index="2" class="java.lang.String" itemvalue="JUnit.Ex1Test.posInfTest" />
-      <item index="3" class="java.lang.String" itemvalue="JUnit.Ex1Test.negInfTest" />
-      <item index="4" class="java.lang.String" itemvalue="JUnit.Ex1Test" />
+      <item index="0" class="java.lang.String" itemvalue="JUnit.Ex1Test.pointM3PiDiv2_l" />
+      <item index="1" class="java.lang.String" itemvalue="JUnit.Ex1Test.posInfTest" />
+      <item index="2" class="java.lang.String" itemvalue="JUnit.Ex1Test.negInfTest" />
+      <item index="3" class="java.lang.String" itemvalue="JUnit.Ex1Test" />
+      <item index="4" class="java.lang.String" itemvalue="JUnit.Ex1Test.pointPiDiv2" />
     </list>
     <recent_temporary>
       <list size="5">
         <item index="0" class="java.lang.String" itemvalue="JUnit.Ex1Test" />
-        <item index="1" class="java.lang.String" itemvalue="JUnit.Ex1Test.negInfTest" />
-        <item index="2" class="java.lang.String" itemvalue="JUnit.Ex1Test.posInfTest" />
-        <item index="3" class="java.lang.String" itemvalue="JUnit.Ex1Test.pointM3PiDiv2_l" />
-        <item index="4" class="java.lang.String" itemvalue="JUnit.Ex1Test.pointM3PiDiv2_r" />
+        <item index="1" class="java.lang.String" itemvalue="JUnit.Ex1Test.pointPiDiv2" />
+        <item index="2" class="java.lang.String" itemvalue="JUnit.Ex1Test.negInfTest" />
+        <item index="3" class="java.lang.String" itemvalue="JUnit.Ex1Test.posInfTest" />
+        <item index="4" class="java.lang.String" itemvalue="JUnit.Ex1Test.pointM3PiDiv2_l" />
       </list>
     </recent_temporary>
   </component>
@@ -405,12 +405,12 @@
       <updated>1459253234601</updated>
       <workItem from="1459253239056" duration="582000" />
       <workItem from="1459253843753" duration="28632000" />
-      <workItem from="1459631589975" duration="9248000" />
+      <workItem from="1459631589975" duration="14061000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="38462000" />
+    <option name="totallyTimeSpent" value="43275000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -455,7 +455,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="66" />
+      <option name="time" value="76" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -566,14 +566,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ru/ifmo/Ex2.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="29" column="48" selection-start-line="0" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/ru/ifmo/Main.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -581,6 +573,14 @@
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/ifmo/Ex2.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="29" column="48" selection-start-line="0" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -609,7 +609,7 @@
     <entry file="file://$PROJECT_DIR$/src/ru/ifmo/Ex1.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="22" column="27" selection-start-line="22" selection-start-column="27" selection-end-line="22" selection-end-column="27" />
+          <caret line="61" column="38" selection-start-line="61" selection-start-column="29" selection-end-line="61" selection-end-column="38" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -618,8 +618,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/test/Ex1Test.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="2.9686985">
-          <caret line="120" column="53" selection-start-line="120" selection-start-column="53" selection-end-line="120" selection-end-column="53" />
+        <state vertical-scroll-proportion="0.53212523">
+          <caret line="99" column="0" selection-start-line="99" selection-start-column="0" selection-end-line="99" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

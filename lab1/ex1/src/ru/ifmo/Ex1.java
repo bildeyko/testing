@@ -29,8 +29,7 @@ public class Ex1 {
                 negative = true;
             x += Math.PI * (1 + buf);
         }
-        if (Math.abs(Math.PI/2 - x) < 1e-9 || Math.abs(Math.PI/2 + x) < 1e-9)
-            return Double.POSITIVE_INFINITY;
+
         if(x == Double.NEGATIVE_INFINITY || x == Double.POSITIVE_INFINITY)
             return Double.NaN;
 
