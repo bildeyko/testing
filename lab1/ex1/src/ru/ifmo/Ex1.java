@@ -13,13 +13,26 @@ public class Ex1 {
     public double sec(double x, double accuracy) {
         double y = 0;
         int i = 0;
-        if ((x <= -Math.PI / 2 + 0.01)) {
-            return Double.NEGATIVE_INFINITY;
+        boolean negative = false;
+        if ((x > Math.PI/2))
+        {
+            int buf = (int) (x * 2 / Math.PI);
+            buf = --buf / 2;
+            if (buf % 2 == 0)
+                negative = true;
+            x -= Math.PI * (1 + buf);
         }
-
-        if ((x >= Math.PI / 2 - 0.01)) {
+        if ((x < -Math.PI/2)) {
+            int buf = (int) (-x * 2 / Math.PI);
+            buf = --buf / 2;
+            if (buf % 2 == 0)
+                negative = true;
+            x += Math.PI * (1 + buf);
+        }
+        if (Math.abs(Math.PI/2 - x) < 1e-9 || Math.abs(Math.PI/2 + x) < 1e-9)
             return Double.POSITIVE_INFINITY;
-        }
+        if(x == Double.NEGATIVE_INFINITY || x == Double.POSITIVE_INFINITY)
+            return Double.NaN;
 
         while (true) {
             BigDecimal tmpBig = getEuler(i).multiply(BigDecimal.valueOf(Math.pow(x, i)));
@@ -34,7 +47,9 @@ public class Ex1 {
             i = i + 2;
         }
 
-        return y;
+        if (negative == true)
+            return -y;
+        else return y;
     }
 
 
