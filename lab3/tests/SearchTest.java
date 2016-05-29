@@ -22,32 +22,45 @@ public class SearchTest {
 	public void setUp() throws Exception {
 		driver = Browser.get();
 		baseUrl = "http://www.ivi.ru/";
+		driver.get(baseUrl);
 	}
 
-	/*@Test
+	@Test
 	public void test1() throws Exception {
-		driver.get(baseUrl);
-		selenium.open("/");
-		selenium.type("//header/div[3]/form/div/input", "Нолан");
-		selenium("//header/div[3]/form/div/input", "Нолан");
-		selenium.click("//ul[@class='persons-result']//a[contains(text(),'Кристофер Нолан')]");
-		selenium.waitForPageToLoad("30000");
-		assertEquals("Кристофер Нолан", selenium.getText("//h1"));
-	}*/
+		WebElement element;
+		WebDriverWait wait;
+		String tmp;
+
+		element = driver.findElement(By.xpath("//header/div[3]/form/div/input"));
+		element.sendKeys("Нолан");
+
+		tmp = "//ul[@class='persons-result']//a[contains(text(),'Кристофер Нолан')]";
+		wait = new WebDriverWait(driver,10);
+		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(tmp)));
+		element = driver.findElement(By.xpath(tmp));
+		element.click();
+
+		wait = new WebDriverWait(driver,30);
+		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//h1")));
+		element = driver.findElement(By.xpath("//h1"));
+		assertEquals("Кристофер Нолан", element.getText());
+	}
 
 	@Test
 	public void test3() throws Exception {
-		driver.get(baseUrl);
 		WebElement element;
+		String tmp;
+
 		element = driver.findElement(By.xpath("//header/div[3]/form/div/input"));
 		element.sendKeys("Начало");
 
 		element = driver.findElement(By.xpath("//header/div[3]/form/div/button"));
 		element.submit();
 
-		WebDriverWait wait = new WebDriverWait(driver,5);
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//section[@class='gallery-wrapper ']/ul/li[2]//span[@class='title']/span")));
-		element = driver.findElement(By.xpath("//section[@class='gallery-wrapper ']/ul/li[2]//span[@class='title']/span"));
+		tmp = "//section[@class='gallery-wrapper ']/ul/li[2]//span[@class='title']/span";
+		WebDriverWait wait = new WebDriverWait(driver,30);
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath(tmp)));
+		element = driver.findElement(By.xpath(tmp));
 		assertEquals("Начало", element.getText());
 	}
 
