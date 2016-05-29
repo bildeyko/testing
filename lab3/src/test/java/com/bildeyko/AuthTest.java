@@ -4,6 +4,7 @@ import com.bildeyko.pages.ActorPage;
 import com.bildeyko.pages.HomePage;
 import com.bildeyko.pages.HomePageAuth;
 import com.bildeyko.pages.ProfilePage;
+import com.bildeyko.util.PropertyLoader;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.support.PageFactory;
@@ -23,8 +24,10 @@ public class AuthTest extends JUnitTestBase {
     }
 
     @Test
-    public void test1() throws Exception {        driver.get(HomePage.URL);
-        ProfilePage profile=homepage.LogIn("lerunm@yandex.ru","moloko@12345");
+    public void test1() throws Exception {
+        driver.get(HomePage.URL);
+        ProfilePage profile = homepage.LogIn(PropertyLoader.loadProperty("username"),
+                                             PropertyLoader.loadProperty("password"));
         WebDriverWait wait = new WebDriverWait(driver, 30);
         wait.until(ExpectedConditions.visibilityOf(profile.name));
         assertEquals("Мой профиль",profile.name.getText());
