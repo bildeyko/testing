@@ -23,17 +23,13 @@ public class UserWatchLaterTest extends JUnitTestBase {
         homepage = PageFactory.initElements(driver, HomePage.class);
         profile = PageFactory.initElements(driver, ProfilePage.class);
         driver.get(HomePage.URL);
-        try {
-            profile = homepage.LogIn(PropertyLoader.loadProperty("username"),
-                    PropertyLoader.loadProperty("password"));
-        }catch (Exception ex)
-        {
-            return;
-        }
+
     }
 
     @Test
     public void test1() throws Exception {
+        profile = homepage.LogIn(PropertyLoader.loadProperty("username"),
+                PropertyLoader.loadProperty("password"));
         driver.get(HomePage.URL);
         HomePage buf = homepage.toLaterList();
         String oldId = buf.laterBtn.getAttribute("data-object-id");
@@ -44,15 +40,23 @@ public class UserWatchLaterTest extends JUnitTestBase {
         wait = new WebDriverWait(driver,5);
         wait.until(ExpectedConditions.visibilityOf(profile.name));
         profile = profile.deleteLater();
+
         assertEquals(oldId, newId);
+
+        homepage.LogOut();
     }
 
     @Test
     public void test2() throws Exception {
+        homepage = PageFactory.initElements(driver, HomePage.class);
+
+        profile = homepage.LogIn(PropertyLoader.loadProperty("username"),
+                PropertyLoader.loadProperty("password"));
         driver.navigate().to(profile.URL + "#favorites");
         WebDriverWait wait = new WebDriverWait(driver,5);
         wait.until(ExpectedConditions.visibilityOf( profile.emptyLater));
         assertEquals("У вас нет фильмов, добавленных для просмотра позже",
                      profile.emptyLater.getText());
+        homepage.LogOut();
     }
 }
