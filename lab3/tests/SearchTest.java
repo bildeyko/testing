@@ -43,8 +43,7 @@ public class SearchTest {
 		element.sendKeys("Начало");
 
 		element = driver.findElement(By.xpath("//header/div[3]/form/div/button"));
-		element.click();
-		//element.sendKeys(Keys.ENTER);
+		element.submit();
 
 		WebDriverWait wait = new WebDriverWait(driver,5);
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//section[@class='gallery-wrapper ']/ul/li[2]//span[@class='title']/span")));
