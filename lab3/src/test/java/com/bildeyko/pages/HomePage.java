@@ -47,6 +47,14 @@ public class HomePage extends Page {
   @CacheLookup
   public WebElement bodyWrapper;
 
+  @FindBy(xpath = "//a[contains(@class,'js-favourite-button')][1]")
+  @CacheLookup
+  public WebElement laterBtn;
+
+  @FindBy(xpath = "//*[@id='favourites']/li[1]")
+  @CacheLookup
+  public WebElement laterCell;
+
   public HomePage(WebDriver webDriver) {
     super(webDriver);
     URL = JUnitTestBase.baseUrl;
@@ -89,6 +97,15 @@ public class HomePage extends Page {
   {
     searchInput.sendKeys(request);
     bodyWrapper.click();
+    return this;
+  }
+
+  public HomePage toLaterList()
+  {
+    laterBtn.click();
+    WebDriverWait wait = new WebDriverWait(driver,30);
+    String tmp = "//a[contains(@class,'favorite bright large active')][1]";
+    wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(tmp)));
     return this;
   }
 }
