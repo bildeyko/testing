@@ -15,7 +15,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class HomePage extends Page {
 
 
-    @FindBy(xpath = "//div/a[@class='login-btn']")
+    @FindBy(xpath = "//div/*[@class='login-btn']")
     @CacheLookup
     private WebElement authBotton;
 
@@ -84,6 +84,23 @@ public class HomePage extends Page {
   @CacheLookup
   public WebElement laterCell;
 
+	@FindBy(xpath="//form/p[@class='js-notice error']")
+    @CacheLookup
+	public WebElement logInError;
+
+	@FindBy(xpath="//*[@class='logout']/a")
+    @CacheLookup
+	public WebElement logOut;
+
+    @FindBy(xpath="//div[@class='profile-block']//*")
+    @CacheLookup
+    public WebElement loginBlock;
+
+	@FindBy(xpath="//div/*/*[contains(text(),'Закрыть')]")
+	public WebElement closeLogInBox;
+
+
+
   public HomePage(WebDriver webDriver) {
     super(webDriver);
     URL = JUnitTestBase.baseUrl;
@@ -93,17 +110,31 @@ public class HomePage extends Page {
         authBotton.click();
         WebDriverWait wait = new WebDriverWait(driver, 30);
         wait.until(ExpectedConditions.visibilityOf(authBox));
-        //authEmail.click();
-        //inputEmail.clear();
         inputEmail.sendKeys(login);
-        //inputPassword.clear();
         inputPassword.sendKeys(password);
         buttonLogIn.click();
         wait.until(ExpectedConditions.visibilityOf(logInBox));
         logInBox.click();
-
         return new ProfilePage(driver);
     }
+    public HomePage NoLogIn(String login, String password) throws InterruptedException {
+        authBotton.click();
+        WebDriverWait wait = new WebDriverWait(driver, 30);
+        wait.until(ExpectedConditions.visibilityOf(authBox));
+        inputEmail.sendKeys(login);
+        inputPassword.sendKeys(password);
+        buttonLogIn.click();
+        return this;
+    }
+    public HomePage LogOut() throws InterruptedException {
+
+            logOut.click();
+
+
+
+        return this;
+    }
+
 
   public ActorPage ActorSearch(String request)
   {
