@@ -5,9 +5,9 @@ package com.bildeyko;
  */
 public class Browser {
     public static String get() {
-        String browser = "*chrome C:\\Program Files (x86)\\Firefox Developer Edition\\firefox.exe";
+        String browser = "*firefox C:\\Program Files (x86)\\Firefox Developer Edition\\firefox.exe";
         //String browser = "*googlechrome";
-
+        
         return browser;
     }
 }
