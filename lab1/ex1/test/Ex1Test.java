@@ -110,4 +110,35 @@ public class Ex1Test {
         double sec = ex1.sec(Double.NEGATIVE_INFINITY, accuracy);
         Assert.assertEquals(Double.NaN, sec, 0.1);
     }
+
+    @Test
+    public void class1Point() {
+        double sec = ex1.sec(-Math.PI/4, accuracy);
+        Assert.assertEquals(1.414, sec, 0.01);
+    }
+
+    @Test
+    public void point100() {
+        double sec = ex1.sec(100, 0.000001);
+        Assert.assertEquals(1.1547, sec, 0.01);
+    }
+
+    @Test
+    public void class2Point() {
+        double sec = ex1.sec(Math.PI/4, accuracy);
+        Assert.assertEquals(1.414, sec, 0.01);
+    }
+
+    @Test
+    public void class3Point() {
+        double sec = ex1.sec(3*Math.PI/4, accuracy);
+        Assert.assertEquals(-1.414, sec, 0.01);
+    }
+
+    @Test
+    public void class4Point() {
+        double sec = ex1.sec(-3*Math.PI/4, accuracy);
+        Assert.assertEquals(-1.414, sec, 0.01);
+    }
+
 }
