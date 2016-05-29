@@ -1,12 +1,17 @@
 package com.bildeyko.pages;
 
 import com.bildeyko.JUnitTestBase;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.util.concurrent.TimeUnit;
 
 /**
  * Sample page
@@ -26,6 +31,22 @@ public class HomePage extends Page {
   @CacheLookup
   public WebElement actorResult;
 
+  @FindBy(xpath = "//a[contains(text(),'Все результаты')]")
+  @CacheLookup
+  public WebElement allResults;
+
+  @FindBy(xpath = "//div[@class='nothing-found']/p[1]")
+  @CacheLookup
+  public WebElement noResults;
+
+  @FindBy(xpath = "//header/div[3]/form/div[@class='result-box dropdown']")
+  @CacheLookup
+  public WebElement resultBox;
+
+  @FindBy(xpath = "//body/div[2]")
+  @CacheLookup
+  public WebElement bodyWrapper;
+
   public HomePage(WebDriver webDriver) {
     super(webDriver);
     URL = JUnitTestBase.baseUrl;
@@ -34,14 +55,40 @@ public class HomePage extends Page {
   public ActorPage ActorSearch(String request)
   {
     searchInput.sendKeys(request);
+    WebDriverWait wait = new WebDriverWait(driver,30);
+    wait.until(ExpectedConditions.visibilityOf(resultBox));
     actorResult.click();
     return new ActorPage(driver);
   }
 
-  public SearchResultPage FullSearch(String request)
+  public SearchResultPage FullSearchBtn(String request)
   {
     searchInput.sendKeys(request);
     searchSubmit.submit();
     return new SearchResultPage(driver);
+  }
+
+  public SearchResultPage FullSearchLink(String request)
+  {
+    searchInput.sendKeys(request);
+    WebDriverWait wait = new WebDriverWait(driver,30);
+    wait.until(ExpectedConditions.visibilityOf(resultBox));
+    allResults.click();
+    return new SearchResultPage(driver);
+  }
+
+  public HomePage NoResultsSearch(String request)
+  {
+    searchInput.sendKeys(request);
+    WebDriverWait wait = new WebDriverWait(driver,30);
+    wait.until(ExpectedConditions.visibilityOf(resultBox));
+    return this;
+  }
+
+  public HomePage CancelSearch(String request)
+  {
+    searchInput.sendKeys(request);
+    bodyWrapper.click();
+    return this;
   }
 }
