@@ -168,7 +168,6 @@ public class HomePage extends Page {
 
     public HomePage LogOut() throws InterruptedException {
 
-
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         Actions action = new Actions(driver);
         Point p = profileLink.getLocation();

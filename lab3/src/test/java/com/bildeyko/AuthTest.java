@@ -35,7 +35,6 @@ public class AuthTest extends JUnitTestBase {
     }
 
     @Test
-
     public void test2() throws Exception {
         driver.get(HomePage.URL);
         HomePage profile = homepage.NoLogIn(PropertyLoader.loadProperty("username"), "ololo");
