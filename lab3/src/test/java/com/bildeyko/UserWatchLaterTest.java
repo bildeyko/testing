@@ -22,12 +22,13 @@ public class UserWatchLaterTest extends JUnitTestBase {
     public void initPageObjects() {
         homepage = PageFactory.initElements(driver, HomePage.class);
         profile = PageFactory.initElements(driver, ProfilePage.class);
-        driver.get(HomePage.URL);
-
     }
 
     @Test
     public void test1() throws Exception {
+        homepage = PageFactory.initElements(driver, HomePage.class);
+        driver.get(HomePage.URL);
+
         profile = homepage.LogIn(PropertyLoader.loadProperty("username"),
                 PropertyLoader.loadProperty("password"));
         driver.get(HomePage.URL);
@@ -49,6 +50,7 @@ public class UserWatchLaterTest extends JUnitTestBase {
     @Test
     public void test2() throws Exception {
         homepage = PageFactory.initElements(driver, HomePage.class);
+        driver.get(HomePage.URL);
 
         profile = homepage.LogIn(PropertyLoader.loadProperty("username"),
                 PropertyLoader.loadProperty("password"));
@@ -57,6 +59,7 @@ public class UserWatchLaterTest extends JUnitTestBase {
         wait.until(ExpectedConditions.visibilityOf( profile.emptyLater));
         assertEquals("У вас нет фильмов, добавленных для просмотра позже",
                      profile.emptyLater.getText());
+
         homepage.LogOut();
     }
 }
