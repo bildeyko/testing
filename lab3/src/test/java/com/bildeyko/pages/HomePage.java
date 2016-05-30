@@ -48,59 +48,66 @@ public class HomePage extends Page {
     public WebElement logInBox;
 
 
-  public static String URL;
+    public static String URL;
 
-  @FindBy(xpath = "//header/div[3]/form/div/input")
-  @CacheLookup
-  public WebElement searchInput;
-
-  @FindBy(xpath = "//header/div[3]/form/div/button")
-  @CacheLookup
-  public WebElement searchSubmit;
-
-  @FindBy(xpath = "//ul[@class='persons-result']//a[contains(text(),'Кристофер Нолан')]")
-  @CacheLookup
-  public WebElement actorResult;
-
-  @FindBy(xpath = "//a[contains(text(),'Все результаты')]")
-  @CacheLookup
-  public WebElement allResults;
-
-  @FindBy(xpath = "//div[@class='nothing-found']/p[1]")
-  @CacheLookup
-  public WebElement noResults;
-
-  @FindBy(xpath = "//header/div[3]/form/div[@class='result-box dropdown']")
-  @CacheLookup
-  public WebElement resultBox;
-
-  @FindBy(xpath = "//body/div[2]")
-  @CacheLookup
-  public WebElement bodyWrapper;
-
-  @FindBy(xpath = "//a[contains(@class,'js-favourite-button')][1]")
-  @CacheLookup
-  public WebElement laterBtn;
-
-  @FindBy(xpath = "//*[@id='favourites']/li[1]")
-  @CacheLookup
-  public WebElement laterCell;
-
-	@FindBy(xpath="//form/p[@class='js-notice error']")
+    @FindBy(xpath = "//header/div[3]/form/div/input")
     @CacheLookup
-	public WebElement logInError;
+    public WebElement searchInput;
 
-	@FindBy(xpath="//*[@class='logout']/a")
+    @FindBy(xpath = "//header/div[3]/form/div/button")
     @CacheLookup
-	public WebElement logOut;
+    public WebElement searchSubmit;
 
-    @FindBy(xpath="//div[@class='profile-block']//*")
+    @FindBy(xpath = "//ul[@class='persons-result']//a[contains(text(),'Кристофер Нолан')]")
+    @CacheLookup
+    public WebElement actorResult;
+
+    @FindBy(xpath = "//a[contains(text(),'Все результаты')]")
+    @CacheLookup
+    public WebElement allResults;
+
+    @FindBy(xpath = "//div[@class='nothing-found']/p[1]")
+    @CacheLookup
+    public WebElement noResults;
+
+    @FindBy(xpath = "//header/div[3]/form/div[@class='result-box dropdown']")
+    @CacheLookup
+    public WebElement resultBox;
+
+    @FindBy(xpath = "//body/div[2]")
+    @CacheLookup
+    public WebElement bodyWrapper;
+
+    @FindBy(xpath = "//a[contains(@class,'js-favourite-button')][1]")
+    @CacheLookup
+    public WebElement laterBtn;
+
+    @FindBy(xpath = "//*[@id='favourites']/li[1]")
+    @CacheLookup
+    public WebElement laterCell;
+
+    @FindBy(xpath = "//form/p[@class='js-notice error']")
+    @CacheLookup
+    public WebElement logInError;
+
+    @FindBy(xpath = "//*[@class='logout']/a")
+    @CacheLookup
+    public WebElement logOut;
+
+    @FindBy(xpath = "//div[@class='profile-block']//*")
     @CacheLookup
     public WebElement loginBlock;
 
-	@FindBy(xpath="//div/*/*[contains(text(),'Закрыть')]")
-	public WebElement closeLogInBox;
+    @FindBy(xpath = "//div/*/*[contains(text(),'Закрыть')]")
+    public WebElement closeLogInBox;
 
+
+    @FindBy(xpath = "//div/*[contains(text(),'Регистрация')]")
+    public WebElement registrationStrButton;
+    @FindBy(xpath = "//div/h1[contains(text(),'Регистрация')]")
+    public WebElement registrationBox;
+    @FindBy(xpath = "//div/button[contains(text(),'Зарегистрироваться')]")
+    public WebElement registrationButton;
     @FindBy(xpath="//*[@class='profile-link']")
     @CacheLookup
     public WebElement profileLink;
@@ -111,11 +118,32 @@ public class HomePage extends Page {
 
 
 
-  public HomePage(WebDriver webDriver) {
-    super(webDriver);
-    URL = JUnitTestBase.baseUrl;
-  }
 
+    public HomePage(WebDriver webDriver) {
+        super(webDriver);
+        URL = JUnitTestBase.baseUrl;
+    }
+
+    public HomePage FailRegistration(String login, String password) throws InterruptedException {
+        authBotton.click();
+        WebDriverWait wait = new WebDriverWait(driver, 30);
+        wait.until(ExpectedConditions.visibilityOf(authBox));
+        registrationStrButton.click();
+        wait.until(ExpectedConditions.visibilityOf(registrationBox));
+        inputEmail.sendKeys(login);
+        inputPassword.sendKeys(password);
+        return this;
+    }
+    public ProfilePage Registration(String login, String password) throws InterruptedException {
+        authBotton.click();
+        WebDriverWait wait = new WebDriverWait(driver, 30);
+        wait.until(ExpectedConditions.visibilityOf(authBox));
+        registrationStrButton.click();
+        wait.until(ExpectedConditions.visibilityOf(registrationBox));
+        inputEmail.sendKeys(login);
+        inputPassword.sendKeys(password);
+        return new ProfilePage(driver);
+    }
     public ProfilePage LogIn(String login, String password) throws InterruptedException {
         authBotton.click();
         WebDriverWait wait = new WebDriverWait(driver, 30);
@@ -127,6 +155,7 @@ public class HomePage extends Page {
         logInBox.click();
         return new ProfilePage(driver);
     }
+
     public HomePage NoLogIn(String login, String password) throws InterruptedException {
         authBotton.click();
         WebDriverWait wait = new WebDriverWait(driver, 30);
@@ -136,63 +165,59 @@ public class HomePage extends Page {
         buttonLogIn.click();
         return this;
     }
+
     public HomePage LogOut() throws InterruptedException {
+
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         Actions action = new Actions(driver);
         Point p = profileLink.getLocation();
         action.moveToElement(logo, p.getX(), p.getY()).build().perform();
         logOut.click();
-
         return this;
     }
 
 
-  public ActorPage ActorSearch(String request)
-  {
-    searchInput.sendKeys(request);
-    WebDriverWait wait = new WebDriverWait(driver,30);
-    wait.until(ExpectedConditions.visibilityOf(resultBox));
-    actorResult.click();
-    return new ActorPage(driver);
-  }
 
-  public SearchResultPage FullSearchBtn(String request)
-  {
-    searchInput.sendKeys(request);
-    searchSubmit.submit();
-    return new SearchResultPage(driver);
-  }
+    public ActorPage ActorSearch(String request) {
+        searchInput.sendKeys(request);
+        WebDriverWait wait = new WebDriverWait(driver, 30);
+        wait.until(ExpectedConditions.visibilityOf(resultBox));
+        actorResult.click();
+        return new ActorPage(driver);
+    }
 
-  public SearchResultPage FullSearchLink(String request)
-  {
-    searchInput.sendKeys(request);
-    WebDriverWait wait = new WebDriverWait(driver,30);
-    wait.until(ExpectedConditions.visibilityOf(resultBox));
-    allResults.click();
-    return new SearchResultPage(driver);
-  }
+    public SearchResultPage FullSearchBtn(String request) {
+        searchInput.sendKeys(request);
+        searchSubmit.submit();
+        return new SearchResultPage(driver);
+    }
 
-  public HomePage NoResultsSearch(String request)
-  {
-    searchInput.sendKeys(request);
-    WebDriverWait wait = new WebDriverWait(driver,30);
-    wait.until(ExpectedConditions.visibilityOf(resultBox));
-    return this;
-  }
+    public SearchResultPage FullSearchLink(String request) {
+        searchInput.sendKeys(request);
+        WebDriverWait wait = new WebDriverWait(driver, 30);
+        wait.until(ExpectedConditions.visibilityOf(resultBox));
+        allResults.click();
+        return new SearchResultPage(driver);
+    }
 
-  public HomePage CancelSearch(String request)
-  {
-    searchInput.sendKeys(request);
-    bodyWrapper.click();
-    return this;
-  }
+    public HomePage NoResultsSearch(String request) {
+        searchInput.sendKeys(request);
+        WebDriverWait wait = new WebDriverWait(driver, 30);
+        wait.until(ExpectedConditions.visibilityOf(resultBox));
+        return this;
+    }
 
-  public HomePage toLaterList()
-  {
-    laterBtn.click();
-    WebDriverWait wait = new WebDriverWait(driver,30);
-    String tmp = "//a[contains(@class,'favorite bright large active')][1]";
-    wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(tmp)));
-    return this;
-  }
+    public HomePage CancelSearch(String request) {
+        searchInput.sendKeys(request);
+        bodyWrapper.click();
+        return this;
+    }
+
+    public HomePage toLaterList() {
+        laterBtn.click();
+        WebDriverWait wait = new WebDriverWait(driver, 30);
+        String tmp = "//a[contains(@class,'favorite bright large active')][1]";
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(tmp)));
+        return this;
+    }
 }
