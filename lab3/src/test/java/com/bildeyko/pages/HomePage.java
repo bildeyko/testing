@@ -145,8 +145,10 @@ public class HomePage extends Page {
         return new ProfilePage(driver);
     }
     public ProfilePage LogIn(String login, String password) throws InterruptedException {
-        authBotton.click();
         WebDriverWait wait = new WebDriverWait(driver, 30);
+        wait.until(ExpectedConditions.visibilityOf(authBotton));
+        authBotton.click();
+        
         wait.until(ExpectedConditions.visibilityOf(authBox));
         inputEmail.sendKeys(login);
         inputPassword.sendKeys(password);

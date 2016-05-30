@@ -16,8 +16,8 @@ import ru.stqa.selenium.factory.WebDriverFactoryMode;
         GuestWatchLaterTest.class,
         UserWatchLaterTest.class,
         GuestWatchTest.class,
-        UserWatchTest.class,
-        SearchTest.class
+        SearchTest.class,
+        UserWatchTest.class
 })
 public class JUnitTestSuite {
 

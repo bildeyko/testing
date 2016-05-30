@@ -53,6 +53,7 @@ public class UserWatchTest extends JUnitTestBase {
         WatchPage buf = watchpage.watch("99906");
         assertFalse(buf.player.isDisplayed());
 
+        driver.navigate().to(HomePage.URL);
         homepage.LogOut();
     }
 }
