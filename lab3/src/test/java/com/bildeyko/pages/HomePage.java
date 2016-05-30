@@ -148,7 +148,7 @@ public class HomePage extends Page {
         WebDriverWait wait = new WebDriverWait(driver, 30);
         wait.until(ExpectedConditions.visibilityOf(authBotton));
         authBotton.click();
-        
+
         wait.until(ExpectedConditions.visibilityOf(authBox));
         inputEmail.sendKeys(login);
         inputPassword.sendKeys(password);
