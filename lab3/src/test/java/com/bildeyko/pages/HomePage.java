@@ -2,12 +2,16 @@ package com.bildeyko.pages;
 
 import com.bildeyko.JUnitTestBase;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Point;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.util.concurrent.TimeUnit;
 
 /**
  * Sample page
@@ -33,11 +37,9 @@ public class HomePage extends Page {
 
 
     @FindBy(xpath = "//div/button[contains(text(),'Войти')]")
-    @CacheLookup
     private WebElement buttonLogIn;
 
     @FindBy(xpath = "//input[@id='pass']")
-    @CacheLookup
     private WebElement inputPassword;
 
 
@@ -99,12 +101,22 @@ public class HomePage extends Page {
     @FindBy(xpath = "//div/*/*[contains(text(),'Закрыть')]")
     public WebElement closeLogInBox;
 
+
     @FindBy(xpath = "//div/*[contains(text(),'Регистрация')]")
     public WebElement registrationStrButton;
     @FindBy(xpath = "//div/h1[contains(text(),'Регистрация')]")
     public WebElement registrationBox;
     @FindBy(xpath = "//div/button[contains(text(),'Зарегистрироваться')]")
     public WebElement registrationButton;
+    @FindBy(xpath="//*[@class='profile-link']")
+    @CacheLookup
+    public WebElement profileLink;
+
+    @FindBy(xpath="//*[@class='logo']/a")
+    @CacheLookup
+    public WebElement logo;
+
+
 
 
     public HomePage(WebDriver webDriver) {
@@ -156,11 +168,15 @@ public class HomePage extends Page {
 
     public HomePage LogOut() throws InterruptedException {
 
+
+        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+        Actions action = new Actions(driver);
+        Point p = profileLink.getLocation();
+        action.moveToElement(logo, p.getX(), p.getY()).build().perform();
         logOut.click();
-
-
         return this;
     }
+
 
 
     public ActorPage ActorSearch(String request) {
