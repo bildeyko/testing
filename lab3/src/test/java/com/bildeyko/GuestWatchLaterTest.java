@@ -2,6 +2,7 @@ package com.bildeyko;
 
 import com.bildeyko.pages.HomePage;
 import com.bildeyko.pages.WatchPage;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
@@ -40,5 +41,10 @@ public class GuestWatchLaterTest extends JUnitTestBase {
     @Test(expected = NoSuchElementException.class)
     public void test4() throws Exception {
         homepage.laterCell.getAttribute("data-id");
+    }
+
+    @After
+    public void tearDown() throws Exception {
+        driver.close();
     }
 }

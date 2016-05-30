@@ -3,6 +3,7 @@ package com.bildeyko;
 import com.bildeyko.pages.ActorPage;
 import com.bildeyko.pages.HomePage;
 import com.bildeyko.pages.WatchPage;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.NoSuchElementException;
@@ -31,5 +32,10 @@ public class GuestWatchTest extends JUnitTestBase  {
     public void test5() throws Exception {
         WatchPage buf = watchpage.watch("99906");
         assertFalse(buf.player.isDisplayed());
+    }
+
+    @After
+    public void tearDown() throws Exception {
+        driver.close();
     }
 }

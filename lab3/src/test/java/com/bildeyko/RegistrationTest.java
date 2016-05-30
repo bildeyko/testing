@@ -61,7 +61,10 @@ public class RegistrationTest extends JUnitTestBase {
         homepage.LogOut();
     }
 
-
+    @After
+    public void tearDown() throws Exception {
+        driver.close();
+    }
 }
 
 

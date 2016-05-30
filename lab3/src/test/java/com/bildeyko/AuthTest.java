@@ -64,6 +64,11 @@ public class AuthTest extends JUnitTestBase {
         assertEquals("Неверный e-mail или пароль", profile.logInError.getText());
         homepage.closeLogInBox.click();
     }
+
+    @After
+    public void tearDown() throws Exception {
+        driver.close();
+    }
 }
 //    @After
 //    public void After() throws InterruptedException {

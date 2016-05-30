@@ -2,6 +2,7 @@ package com.bildeyko;
 
 import com.bildeyko.pages.ActorPage;
 import com.bildeyko.pages.SearchResultPage;
+import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -62,5 +63,10 @@ public class SearchTest extends JUnitTestBase {
     driver.get(HomePage.URL);
     HomePage res = homepage.CancelSearch("Пурум");
     assertFalse(res.resultBox.isDisplayed());
+  }
+
+  @After
+  public void tearDown() throws Exception {
+    driver.close();
   }
 }

@@ -121,7 +121,7 @@ public class HomePage extends Page {
 
     public HomePage(WebDriver webDriver) {
         super(webDriver);
-        URL = JUnitTestBase.baseUrl;
+        URL = JUnitTestBase.baseUrl + '#';
     }
 
     public HomePage FailRegistration(String login, String password) throws InterruptedException {

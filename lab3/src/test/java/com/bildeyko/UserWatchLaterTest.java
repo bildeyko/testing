@@ -3,6 +3,7 @@ package com.bildeyko;
 import com.bildeyko.pages.HomePage;
 import com.bildeyko.pages.ProfilePage;
 import com.bildeyko.util.PropertyLoader;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.support.PageFactory;
@@ -61,5 +62,10 @@ public class UserWatchLaterTest extends JUnitTestBase {
                      profile.emptyLater.getText());
 
         homepage.LogOut();
+    }
+
+    @After
+    public void tearDown() throws Exception {
+        driver.close();
     }
 }

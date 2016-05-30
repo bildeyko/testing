@@ -4,6 +4,7 @@ import com.bildeyko.pages.HomePage;
 import com.bildeyko.pages.ProfilePage;
 import com.bildeyko.pages.WatchPage;
 import com.bildeyko.util.PropertyLoader;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.NoSuchElementException;
@@ -55,5 +56,10 @@ public class UserWatchTest extends JUnitTestBase {
 
         driver.navigate().to(HomePage.URL);
         homepage.LogOut();
+    }
+
+    @After
+    public void tearDown() throws Exception {
+        driver.close();
     }
 }
