@@ -10,7 +10,15 @@ import ru.stqa.selenium.factory.WebDriverFactory;
 import ru.stqa.selenium.factory.WebDriverFactoryMode;
 
 @RunWith(Suite.class)
-@SuiteClasses({SearchTest.class})
+@SuiteClasses({
+        AuthTest.class,
+        RegistrationTest.class,
+        GuestWatchLaterTest.class,
+        UserWatchLaterTest.class,
+        GuestWatchTest.class,
+        UserWatchTest.class,
+        SearchTest.class
+})
 public class JUnitTestSuite {
 
   @Rule
